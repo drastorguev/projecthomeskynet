@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Weather - Project Home Skynet</title>
+  <meta name="description" content="Blah blah blah">
+  <meta name="author" content="Blah blah blah">
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+  <h1>Weather Forecast</h1>
+  <h3>This is the weather forcast as of {{ asofdate }}</h3>
+  <h3>Location: {{ forlocation }}</h3>
+    {% for period in dailydata %}
+      <h5>{{ period.value }}</h5>
+      {% for slot in period.Rep %}
+        <div style="border: 1px solid black; margin: 3px; background-color:#DDDDDD; display: inline-block; width: 300px">
+        <p>TIME ==> {{ slot['$'] }}</p>
+        <p>Weather Type: {{ slot.W }}, Precipitation Probability: {{ slot.Pp }}</p>
+        <p>Temperaute: {{ slot.T }} (feels like {{ slot.F }})</p>
+        </div>
+      {% endfor %}
+    {% endfor %}
+</body>
+</html>
